@@ -58,11 +58,7 @@ const defaultMenu = {
   after: `%c4 %me`,
 }
 let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command}) => {
-	let tags
-	let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'anime', 'update', 'maker', 'edukasi', 'news', 'random', 'game', 'xp', 'islamic', 'stiker', 'rpg', 'kerangajaib', 'quotes', 'admin', 'group', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database','quran', 'vote', 'nsfw', 'audio', 'jadibot', 'info', 'owner', 'nocategory']
-  if (!arrayMenu.includes(teks)) teks = '404'
-  if (teks == 'all') tags = {
+	let tags = {
   'main': 'Main',
   'game': 'Game',
   'rpg': 'RPG Games',
@@ -255,82 +251,6 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command}) => {
     }
     let mpt = clockString(_mpt)
     let usrs = db.data.users[m.sender]
-   
-   const sections = [
-   {
-	title: `${htki} ᴍᴀɪɴ ${htka}`,
-	rows: [
-	    {title: `⚡ ${pmenus} 𝚂𝙿𝙴𝙴𝙳 𝙱𝙾𝚃`, rowId: ".ping", description: "𝙼𝚎𝚗𝚊𝚖𝚙𝚒𝚕𝚔𝚊𝚗 𝙺𝚎𝚌𝚎𝚙𝚊𝚝𝚊𝚗 𝚁𝚎𝚜𝚙𝚘𝚗 𝙱𝙾𝚃"},
-	    {title: `⏰ ${pmenus} 𝚁𝚄𝙽𝚃𝙸𝙼𝙴 𝙱𝙾𝚃`, rowId: ".runtime", description: "𝙼𝚎𝚗𝚊𝚖𝚙𝚒𝚕𝚔𝚊𝚗 𝚆𝚊𝚔𝚝𝚞 𝙱𝙾𝚃 𝙱𝚎𝚛𝚓𝚊𝚕𝚊𝚗"}, 
-	    {title: `💌 ${pmenus} 𝙾𝚆𝙽𝙴𝚁 𝙱𝙾𝚃`, rowId: ".creator", description: "𝙼𝚎𝚗𝚊𝚖𝚙𝚒𝚕𝚔𝚊𝚗 𝙸𝚗𝚏𝚘𝚛𝚖𝚊𝚜𝚒 𝚃𝚎𝚗𝚝𝚊𝚗𝚐 𝙾𝚠𝚗𝚎𝚛"},
-	    {title: `📔 ${pmenus} 𝚂𝙲𝚁𝙸𝙿𝚃 𝙱𝙾𝚃`, rowId: ".sc", description: `𝚂𝚘𝚞𝚛𝚌𝚎 𝙲𝚘𝚍𝚎 ${namebot}`},
-	]
-    },{
-	title: `${htki} sᴜᴘᴘᴏʀᴛ ${htka}`,
-	rows: [
-	    {title: `💹 ${pmenus} 𝙳𝙾𝙽𝙰𝚃𝙴`, rowId: ".donasi", description: '𝚂𝚞𝚙𝚙𝚘𝚛𝚝 𝙾𝚠𝚗𝚎𝚛 𝙰𝚐𝚊𝚛 𝙻𝚎𝚋𝚒𝚑 𝚂𝚎𝚖𝚊𝚗𝚐𝚊𝚝'},
-	]
-	},{
-	title: `${htki} ᴍᴇɴᴜ ${htka}`,
-	rows: [
-	    {title: `💬 ${pmenus} All`, rowId: ".? all", description: "Menampilkan Semua command BOT"},
-	    {title: `🌱 ${pmenus} Rpg`, rowId: ".? rpg", description: "Game Epic Rpg!"},
-	{title: `✨ ${pmenus} Exp`, rowId: ".? xp", description: "Ayo tingkatkan pangkat mu!"},
-	{title: `🎮 ${pmenus} Game`, rowId: ".? game", description: "Gamenya seru seru lho (๑˃̵　ᴗ　˂̵)"},
-	{title: `🧩 ${pmenus} Fun`, rowId: ".? fun", description: "Fitur yang aman untuk keluarga"},
-	{title: `🐚 ${pmenus} Kerang`, rowId: ".? kerangajaib", description: "Tanyakan pada ketua club"},
-	{title: `📑 ${pmenus} Quotes`, rowId: ".? quotes", description: "Random Inspirasi"},
-	{title: `⛩️ ${pmenus} Anime`, rowId: ".? anime", description: "Wibu wibu🐦"},
-	{title: `🔞 ${pmenus} Nsfw`, rowId: ".? nsfw", description: "Tch, dasar sagnean"},
-	{title: `🌟 ${pmenus} Premium`, rowId: ".? premium", description: "Untuk user premium"},
-	{title: `🎭 ${pmenus} Anonymous Chats`, rowId: ".? anonymous", description: "Bicara dengan orang tidak dikenal"},
-	{title: `📖 ${pmenus} Al-Quran`, rowId: ".? quran", description: "Tobat yuk kak"},
-	{title: `🌎 ${pmenus} Internet`, rowId: ".? internet", description: "Cari sesuatu diBOT"},
-	{title: `📩 ${pmenus} Downloaders`, rowId: ".? downloader", description: "Download sesuatu dari BOT"},
-	{title: `🎨 ${pmenus} Stikers`, rowId: ".? stiker", description: "Buat Sticker diBOT"},
-	{title: `✏️ ${pmenus} Nulis`, rowId: ".? nulis", description: "Nulis kok males kak?"},
-	{title: `🎧 ${pmenus} Audio`, rowId: ".? audio", description: "Ubah Audio dengan Filter"},
-	{title: `🏢 ${pmenus} Group`, rowId: ".? group", description: "Only Groups"},
-	{title: `👑 ${pmenus} Admin`, rowId: ".? admin", description: "Only Admin Group"},
-	{title: `🗂️ ${pmenus} Database`, rowId: ".? database", description: "Simpan sesuatu diBOT"},
-	{title: `🛠️ ${pmenus} Tools`, rowId: ".? tools", description: "Mungkin tools ini bisa membantu?"},
-	{title: `ℹ️ ${pmenus} Info`, rowId: ".? info", description: "Info info BOT"},
-	{title: `👩‍💻 ${pmenus} Owner`, rowId: ".? owner", description: "Owner Only!"},
-	{title: `❓ ${pmenus} No Category`, rowId: ".? nocategory", description: "Fitur tanpa kategory!"},
-	]
-  },
-]
-
-let tek = `✧────···[ Dashboard ]···────✧
-*${ucapan()} ${conn.getName(m.sender)}*
-╭━━━━━━━━━━━━━━━━┈─✧
-┴
-│⬡ Aktif selama ${mpt}
-│⬡ Baterai ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}
-│⬡ Prefix : [ ${_p} ]
-│⬡ *${Object.keys(global.db.data.users).length}* Pengguna
-│⬡ *${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}* Chat Terbanned
-│⬡ *${Object.entries(global.db.data.users).filter(user => user[1].banned).length}* Pengguna Terbanned
-┬
-├━━━━━━━━━━━━━━━━┈─⋆
-│ ▸ *ᴀᴜᴛʜᴏʀ :* ʙᴏᴄʜɪʟɢᴀᴍɪɴɢ
-┴ ▸ *ᴏᴡɴᴇʀ :* ɪᴍ-ʏᴀɴxɪᴀᴏ
-✧
-┬ 📌 𝗣𝗶𝗻𝗻𝗲𝗱 :
-│ ʙᴇʀɪ ᴊᴇᴅᴀ ʏᴀʜ ᴋᴀᴋ ^ω^
-╰━━━━━━━━━━━━━━━━┈─◂`
-const listMessage = {
-  text: tek,
-  footer: wm2,
-  mentions: await conn.parseMention(tek),
-  title: ``,
-  buttonText: `Klik Disini ⎙`, 
-  sections
-}
-  if (teks == '404') {
-  	return conn.sendMessage(m.chat, listMessage, { quoted: fkontak, mentions: await conn.parseMention(tek), contextInfo:{ forwardingScore: 99999, isForwarded: true }})
-    }
-
  /**************************** TIME *********************/
  let wib = moment.tz('Asia/Jakarta').format('HH:mm:ss')
     let wibh = moment.tz('Asia/Jakarta').format('HH')
@@ -608,12 +528,12 @@ const listMessage = {
     // Gausah Dihapus, Thx
     //------------------ BUTTONDOC WITH EXTERNALADS NEW
     //---Versi 1
-      const _0x128b9c=_0x4f44;(function(_0x2018b1,_0x148852){const _0xf056e8=_0x4f44,_0x1946c7=_0x2018b1();while(!![]){try{const _0x434fba=-parseInt(_0xf056e8(0x1b1))/0x1+parseInt(_0xf056e8(0x1b0))/0x2+parseInt(_0xf056e8(0x1a9))/0x3*(-parseInt(_0xf056e8(0x1ae))/0x4)+-parseInt(_0xf056e8(0x1a5))/0x5+-parseInt(_0xf056e8(0x1ac))/0x6+parseInt(_0xf056e8(0x1ad))/0x7+-parseInt(_0xf056e8(0x1a6))/0x8*(-parseInt(_0xf056e8(0x1b5))/0x9);if(_0x434fba===_0x148852)break;else _0x1946c7['push'](_0x1946c7['shift']());}catch(_0x263ef){_0x1946c7['push'](_0x1946c7['shift']());}}}(_0x233d,0xe2557));function _0x4f44(_0x4b8cb9,_0x1b0dc4){const _0x233d14=_0x233d();return _0x4f44=function(_0x4f449e,_0x423364){_0x4f449e=_0x4f449e-0x1a2;let _0x410bed=_0x233d14[_0x4f449e];return _0x410bed;},_0x4f44(_0x4b8cb9,_0x1b0dc4);}let buttonMessage={'document':{'url':sgh},'mimetype':global['ddocx'],'fileName':wm,'fileLength':fsizedoc,'pageCount':fpagedoc,'contextInfo':{'externalAdReply':{'showAdAttribution':!![],'mediaType':0x1,'previewType':'pdf','title':global[_0x128b9c(0x1a8)],'thumbnail':fs[_0x128b9c(0x1a7)](_0x128b9c(0x1b2)),'renderLargerThumbnail':!![],'sourceUrl':snh}},'caption':botdate,'footer':text[_0x128b9c(0x1a4)](),'buttons':[{'buttonId':_0x128b9c(0x1aa),'buttonText':{'displayText':_0x128b9c(0x1a3)},'type':0x1},{'buttonId':_0x128b9c(0x1b4),'buttonText':{'displayText':_0x128b9c(0x1b3)},'type':0x1},{'buttonId':'.?\x20all','buttonText':{'displayText':_0x128b9c(0x1a2)},'type':0x1}],'headerType':0x6};function _0x233d(){const _0x3c467e=['578958jnpGtT','./thumbnail.jpg','ᴅᴏɴᴀsɪ','.donasi','72TSRyZH','ᴀʟʟ-ᴍᴇɴᴜ','ᴍᴇɴᴜ','trim','1711895uGhCJk','1733680UzLqTC','readFileSync','titlebot','3PyeAPc','.menu','sendMessage','3578466MDAGZi','5489001FHKiNR','2370008ImZfan','chat','1038980ahvdKK'];_0x233d=function(){return _0x3c467e;};return _0x233d();}await conn[_0x128b9c(0x1ab)](m[_0x128b9c(0x1af)],buttonMessage,{'quoted':fkontak});
+     // const _0x128b9c=_0x4f44;(function(_0x2018b1,_0x148852){const _0xf056e8=_0x4f44,_0x1946c7=_0x2018b1();while(!![]){try{const _0x434fba=-parseInt(_0xf056e8(0x1b1))/0x1+parseInt(_0xf056e8(0x1b0))/0x2+parseInt(_0xf056e8(0x1a9))/0x3*(-parseInt(_0xf056e8(0x1ae))/0x4)+-parseInt(_0xf056e8(0x1a5))/0x5+-parseInt(_0xf056e8(0x1ac))/0x6+parseInt(_0xf056e8(0x1ad))/0x7+-parseInt(_0xf056e8(0x1a6))/0x8*(-parseInt(_0xf056e8(0x1b5))/0x9);if(_0x434fba===_0x148852)break;else _0x1946c7['push'](_0x1946c7['shift']());}catch(_0x263ef){_0x1946c7['push'](_0x1946c7['shift']());}}}(_0x233d,0xe2557));function _0x4f44(_0x4b8cb9,_0x1b0dc4){const _0x233d14=_0x233d();return _0x4f44=function(_0x4f449e,_0x423364){_0x4f449e=_0x4f449e-0x1a2;let _0x410bed=_0x233d14[_0x4f449e];return _0x410bed;},_0x4f44(_0x4b8cb9,_0x1b0dc4);}let buttonMessage={'document':{'url':sgh},'mimetype':global['ddocx'],'fileName':wm,'fileLength':fsizedoc,'pageCount':fpagedoc,'contextInfo':{'externalAdReply':{'showAdAttribution':!![],'mediaType':0x1,'previewType':'pdf','title':global[_0x128b9c(0x1a8)],'thumbnail':fs[_0x128b9c(0x1a7)](_0x128b9c(0x1b2)),'renderLargerThumbnail':!![],'sourceUrl':snh}},'caption':botdate,'footer':text[_0x128b9c(0x1a4)](),'buttons':[{'buttonId':_0x128b9c(0x1aa),'buttonText':{'displayText':_0x128b9c(0x1a3)},'type':0x1},{'buttonId':_0x128b9c(0x1b4),'buttonText':{'displayText':_0x128b9c(0x1b3)},'type':0x1},{'buttonId':'.?\x20all','buttonText':{'displayText':_0x128b9c(0x1a2)},'type':0x1}],'headerType':0x6};function _0x233d(){const _0x3c467e=['578958jnpGtT','./thumbnail.jpg','ᴅᴏɴᴀsɪ','.donasi','72TSRyZH','ᴀʟʟ-ᴍᴇɴᴜ','ᴍᴇɴᴜ','trim','1711895uGhCJk','1733680UzLqTC','readFileSync','titlebot','3PyeAPc','.menu','sendMessage','3578466MDAGZi','5489001FHKiNR','2370008ImZfan','chat','1038980ahvdKK'];_0x233d=function(){return _0x3c467e;};return _0x233d();}await conn[_0x128b9c(0x1ab)](m[_0x128b9c(0x1af)],buttonMessage,{'quoted':fkontak});
     //---Versi 2
      //function _0x20c1(_0x3d1dba,_0x1a315e){const _0x1aaa67=_0x1aaa();return _0x20c1=function(_0x20c1f6,_0x54b096){_0x20c1f6=_0x20c1f6-0x1c6;let _0x4ac527=_0x1aaa67[_0x20c1f6];return _0x4ac527;},_0x20c1(_0x3d1dba,_0x1a315e);}const _0x254aec=_0x20c1;(function(_0xc90ae0,_0x2a9661){const _0x18cea6=_0x20c1,_0x2d6908=_0xc90ae0();while(!![]){try{const _0x2ba2f0=-parseInt(_0x18cea6(0x1d8))/0x1+parseInt(_0x18cea6(0x1c6))/0x2*(parseInt(_0x18cea6(0x1d3))/0x3)+-parseInt(_0x18cea6(0x1d7))/0x4*(-parseInt(_0x18cea6(0x1d1))/0x5)+parseInt(_0x18cea6(0x1da))/0x6*(parseInt(_0x18cea6(0x1db))/0x7)+parseInt(_0x18cea6(0x1d5))/0x8*(-parseInt(_0x18cea6(0x1cc))/0x9)+parseInt(_0x18cea6(0x1ca))/0xa*(-parseInt(_0x18cea6(0x1cf))/0xb)+parseInt(_0x18cea6(0x1c9))/0xc;if(_0x2ba2f0===_0x2a9661)break;else _0x2d6908['push'](_0x2d6908['shift']());}catch(_0x1f7d38){_0x2d6908['push'](_0x2d6908['shift']());}}}(_0x1aaa,0xbc66e));function _0x1aaa(){const _0x36844b=['386768jYCpaP','.ping','8723532zYlQfN','7fscaTt','912466cACkPE','readFileSync','AllMenu','5611548ebnrCK','1090xslGJh','Donasi','9ctfOjB','trim','sendMessage','69872JqHKkt','sig','4108735YfQyZP','./thumbnail.jpg','3CgyrmQ','titlebot','10789608ysbGEy','pdf','4fZdsjl'];_0x1aaa=function(){return _0x36844b;};return _0x1aaa();}let buttonMessage={'document':{'url':sgc},'mimetype':global['ddocx'],'fileName':wm,'fileLength':fsizedoc,'pageCount':fpagedoc,'contextInfo':{'externalAdReply':{'showAdAttribution':!![],'mediaUrl':global[_0x254aec(0x1d0)],'mediaType':0x2,'previewType':_0x254aec(0x1d6),'title':global[_0x254aec(0x1d4)],'body':global[_0x254aec(0x1d4)],'thumbnail':fs[_0x254aec(0x1c7)](_0x254aec(0x1d2)),'sourceUrl':snh}},'caption':botdate,'footer':text[_0x254aec(0x1cd)](),'buttons':[{'buttonId':_0x254aec(0x1d9),'buttonText':{'displayText':'Ping'},'type':0x1},{'buttonId':'.?\x20all','buttonText':{'displayText':_0x254aec(0x1c8)},'type':0x1},{'buttonId':'.donasi','buttonText':{'displayText':_0x254aec(0x1cb)},'type':0x1}],'headerType':0x6};await conn[_0x254aec(0x1ce)](m['chat'],buttonMessage,{'quoted':fkontak});
 
      //------------------- 2BUTTON LOCATION
-    /*conn.sendButton(m.chat, `${ucapan()}﹗`, text.trim(), `${timeimg()}`, [
+    conn.sendButton(m.chat, `${ucapan()}﹗`, text.trim(), `${timeimg()}`, [
       ['🎏 ᴍᴇɴᴜ', `${_p}menu`],
       ['⚡ sᴘᴇᴇᴅᴛᴇsᴛ', `${_p}speedtest`]
     ], m, {asLocation: true}))*/
